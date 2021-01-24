@@ -1,4 +1,4 @@
-<h3 align="center">Дан  Python Rest Сервис</h3>
+<h3 align="center">NGINX + FLASK + GUNICORN + LETSENCRYPT + DOCKER Boilerplate</h3>
 <p align="center"> Nginx + Gunicorn + Flask + LetsEncrypt + docker-compose.</p>
 
 ---
