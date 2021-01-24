@@ -1,0 +1,27 @@
+
+
+version: "3.2"
+
+services:
+  nginx:
+    build:
+      context: ./nginx
+      args:
+        DOMAIN: ${DOMAIN}
+        EMAIL: ${EMAIL}
+        FLASK: application
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt
+    depends_on:
+      - application
+
+  application:
+    build: ./${APP_FOLDER}
+    command: gunicorn --bind 0.0.0.0:5000 --workers 3 ${FLASK_APP}:app
+    environment:
+      - FLASK_ENV=${FLASK_ENV}
+    ports:
+      - 5000:5000
